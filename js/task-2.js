@@ -14,13 +14,16 @@ class Storage {
 
   removeItem(itemToRemove) {
     const itemIndex = this.#items.indexOf(itemToRemove);
-    this.#items.splice(itemIndex, 1);
+    if (itemIndex !== -1) {
+      this.#items.splice(itemIndex, 1);
+    }
   }
-}
+};
 
-const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
-storage.addItem('Droid');
+storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
-storage.removeItem('Prolonger');
+storage.removeItem("Prolonger");
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
